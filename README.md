@@ -78,6 +78,28 @@ function mulberry32(seed) {
 
 帽子：皇冠 · 高帽 · 螺旋帽 · 光环 · 巫师帽 · 毛线帽 · 小鸭帽 · 或者什么都不戴
 
+### ⚠️ 关于物种列表：薛定谔的胖墩
+
+**诚实声明：我们不确定上面这个列表是不是真的。**
+
+泄露的源码里，物种名被 `String.fromCharCode()` 编码藏了起来——Anthropic 显然不想让这些名字被 grep 搜到。这意味着你没法直接在代码里 ctrl+F 找到 "duck" 或 "capybara"，需要手动解码那些 charCode 数组才能知道真正的物种名。
+
+问题在于，目前互联网上流传着至少**两套完全不同的"解码结果"**：
+
+**列表 A**（本项目使用）来自 [ccleaks.com](https://www.ccleaks.com/) 和多个小红书博主：duck、cat、ghost、dragon、octopus、robot、capybara、mushroom……全是日常动物，画风可爱。
+
+**列表 B** 来自 [Kuberwastaken/claude-code](https://github.com/Kuberwastaken/claude-code)（目前 star 最多的泄露源码镜像仓库）：Pebblecrab、Dustbunny、Mossfrog、Crystaldrake、Nebulynx……全是奇幻生物名，而且物种和稀有度绑定（比如 Nebulynx 只出现在传说级）。
+
+两套列表在物种名、数量分布逻辑、属性范围（A 用 1-20，B 用 0-100）上完全矛盾，但都声称来自同一份泄露的 512,000 行 TypeScript 源码。
+
+再加上一个关键时间节点：**泄露发生在 2026 年 3 月 31 日，源码中提到 Buddy 的 teaser window 是 April 1-7**。也就是说，Buddy 本身可能就是 Anthropic 准备好的**愚人节彩蛋**。在这个前提下，源码里故意埋两套矛盾的数据来制造混乱也完全说得通。
+
+我们做这个项目的时候用了列表 A，因为当时还不知道列表 B 的存在。发现的时候项目已经做完推上 GitHub 了。
+
+所以：**你的戴高帽胖墩可能从一开始就不存在于官方的 Buddy 宇宙里。也可能存在。取决于哪套列表是真的，或者取决于 Anthropic 有没有在愚人节前夜对着屏幕偷笑。**
+
+薛定谔的宠物。
+
 ## 技术栈
 
 React 18 + Vite + Canvas API。像素精灵是手搓的 16×16 数组。整个项目就一个组件。
